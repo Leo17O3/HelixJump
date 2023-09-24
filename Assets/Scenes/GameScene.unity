@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelCount: 5
-  _additiveScale: 0.5
+  _additiveScale: 1.5
   _beam: {fileID: 3042948068281057237, guid: 764d38103404dd14a97f67eefda19cea, type: 3}
   _spawnPlatform: {fileID: 9158260219502193264, guid: f496d10b89e9b2648a2ae47b10185a52, type: 3}
   _platforms:

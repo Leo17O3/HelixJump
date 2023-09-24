@@ -20,31 +20,37 @@ public class TowerSpawner : MonoBehaviour
         beam.transform.localScale = new Vector3(1f, _levelCount / 2, 1f);
 
         Vector3 spawnPosition = beam.transform.position;
-        spawnPosition.y += beam.transform.localScale.y;
+        spawnPosition.y += beam.transform.localScale.y + _additiveScale;
+
+        SpawnPlatform(_spawnPlatform, ref spawnPosition, Quaternion.identity, beam.transform);
 
         for (int i = 0; i < _levelCount; i++)
         {
-            SpawnPlatform(_platforms[Random.Range(0, _platforms.Length)], ref spawnPosition, beam.transform);
+            SpawnPlatform(_platforms[Random.Range(0, _platforms.Length)], ref spawnPosition, Quaternion.Euler(0, Random.Range(0, 360), 0), beam.transform);
         }
 
         beam.transform.localScale = new Vector3(1f, beam.transform.localScale.y + _additiveScale, 1f);
-        spawnPosition.y = beam.transform.localScale.y;
 
-        SpawnPlatform(_spawnPlatform.gameObject, ref spawnPosition, beam.transform);
-        SpawnPlatform(_finishPlatform.gameObject, ref spawnPosition, beam.transform);
+        Vector3 beamScale = new Vector3(0f, -beam.transform.localScale.y, 0f);
 
-        beam.transform.localScale = new Vector3(1f, beam.transform.localScale.y + _additiveScale, 1f);
+        SpawnPlatform(_finishPlatform, ref beamScale, Quaternion.identity, beam.transform);
+
+        //beam.transform.localScale = new Vector3(1f, beam.transform.localScale.y + _additiveScale, 1f);
+        SpawnAdditiveGameObject(beam.transform.position.y + beam.transform.localScale.y + _additiveScale, beam.transform);
+        SpawnAdditiveGameObject(-beam.transform.position.y - beam.transform.localScale.y - _additiveScale, beam.transform);
     }
 
-    private void SpawnPlatform(Platform platform, ref Vector3 spawnPosition, Transform parent)
+    private void SpawnPlatform(BasePlatform platform, ref Vector3 spawnPosition, Quaternion rotation, Transform parent)
     {
-        Instantiate(platform, spawnPosition, Quaternion.Euler(0, Random.Range(0, 360), 0), parent);
+        Instantiate(platform, spawnPosition, rotation, parent);
         spawnPosition.y -= 1;
     }
 
-    private void SpawnPlatform(GameObject platformToSpawn, ref Vector3 spawnPosition, Transform parent)
+    private void SpawnAdditiveGameObject(float positionY, Transform parent)
     {
-        Instantiate(platformToSpawn, spawnPosition, Quaternion.identity, parent);
-        spawnPosition.y *= -1;
+        Transform additiveTransform = GameObject.CreatePrimitive(PrimitiveType.Cylinder).transform;
+        additiveTransform.localScale = new Vector3(1f, _additiveScale, 1f);
+        additiveTransform.position = new Vector3(0f, positionY, 0f);
+        additiveTransform.parent = parent;
     }
 }
