@@ -9,6 +9,7 @@ public abstract class BasePlatform : MonoBehaviour
         if (collision.gameObject.TryGetComponent(out Rigidbody rigidbody))
         {
             rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            Debug.Log("Added!");
         }
     }
 }

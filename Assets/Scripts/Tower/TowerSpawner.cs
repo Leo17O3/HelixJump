@@ -25,7 +25,7 @@ public class TowerSpawner : MonoBehaviour
         Vector3 spawnPosition = beam.transform.position;
         spawnPosition.y += beam.transform.localScale.y - _additionalScale;
 
-        SpawnPlatform(_spawnPlatform, ref spawnPosition, Quaternion.identity, beam.transform);
+        SpawnPlatform(_spawnPlatform, ref spawnPosition, Quaternion.Euler(0, 30f, 0), beam.transform);
 
         for (int i = 0; i < _levelCount; i++)
         {
