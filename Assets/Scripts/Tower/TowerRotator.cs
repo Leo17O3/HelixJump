@@ -3,7 +3,10 @@ using UnityEngine;
 public class TowerRotator : MonoBehaviour
 {
     [SerializeField] private float _rotateSpeed;
-    private int _currentTime;
+    [SerializeField] private float _extantageForce;
+    private int _currentExentageRotateTime;
+    private float _rotationX;
+    private float _deltaX;
 
     private void Update()
     {
@@ -13,18 +16,29 @@ public class TowerRotator : MonoBehaviour
 
             if (touch.phase == TouchPhase.Moved)
             {
-                float _rotationX = /*touch.deltaPosition.x * */_rotateSpeed * Time.deltaTime;
-                transform.Rotate(Vector3.up, _rotationX);
+                _deltaX = touch.deltaPosition.x;
+                _rotationX = _deltaX * _rotateSpeed * Time.fixedDeltaTime;
             }
             else if (touch.phase == TouchPhase.Ended)
             {
-                _currentTime = (int)_rotateSpeed;
+                _rotationX = 0;
+                _currentExentageRotateTime = (int)_rotateSpeed;
             }
-            else if (_currentTime > 0)
-            {
-                transform.Rotate(Vector3.up, _rotateSpeed * _currentTime);
-                --_currentTime;
-            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+
+        if(_rotationX != 0)
+        {
+            transform.Rotate(Vector3.down * _rotationX);
+        }
+
+        if (_currentExentageRotateTime > 0)
+        {
+            transform.Rotate(Vector3.up * -Mathf.Clamp(_deltaX, -1f, 1f) * _rotateSpeed * _extantageForce * _currentExentageRotateTime * Time.fixedDeltaTime);
+            --_currentExentageRotateTime;
         }
     }
 }

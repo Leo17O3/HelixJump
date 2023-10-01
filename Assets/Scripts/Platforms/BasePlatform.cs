@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class BasePlatform : MonoBehaviour
 {
-    [SerializeField] private float _jumpForce = 5f;
+    [SerializeField] private float _jumpForce = 2f;
 
     private void OnCollisionEnter(Collision collision)
     {

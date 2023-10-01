@@ -477,3 +477,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotateSpeed: 5
+  _extantageForce: 1
