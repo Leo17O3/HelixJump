@@ -12,7 +12,7 @@ public class TowerSpawner : MonoBehaviour
 
     private float _beamScaleY => _additionalScale / 2f + _startAndFinishAdditionalScale + _levelCount / 2f;
 
-    private void Start()
+    private void Awake()
     {
         Build();
     }

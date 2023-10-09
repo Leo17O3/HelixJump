@@ -1,15 +1,23 @@
+using System.Threading.Tasks;
 using UnityEngine;
 
 public abstract class BasePlatform : MonoBehaviour
 {
-    [SerializeField] private float _jumpForce = 2f;
+    [SerializeField] private float _force;
+    [SerializeField] private float _radius;
 
-    private void OnCollisionEnter(Collision collision)
+    public async void Break()
     {
-        if (collision.gameObject.TryGetComponent(out Rigidbody rigidbody))
+        for (int i = 0; i < transform.childCount; i++)
         {
-            rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
-            Debug.Log("Added!");
+
+            Rigidbody rigidbody = transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+
+            while (rigidbody == null)
+                await Task.Yield();
+
+            rigidbody.AddExplosionForce(_force, this.transform.position, _radius);
+
         }
     }
 }

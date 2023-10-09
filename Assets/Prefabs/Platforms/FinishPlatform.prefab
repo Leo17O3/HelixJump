@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7677861808043416609}
   - component: {fileID: 7938915255993213717}
   - component: {fileID: -3614856703836334411}
+  - component: {fileID: 4190725523654665354}
+  - component: {fileID: 5356321376964584727}
   m_Layer: 0
   m_Name: FinishPlatform
   m_TagString: Untagged
@@ -49,6 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _jumpForce: 5
+  _force: 0
+  _radius: 0
 --- !u!54 &-3614856703836334411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -65,6 +69,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!33 &4190725523654665354
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582869417867663460}
+  m_Mesh: {fileID: 0}
+--- !u!64 &5356321376964584727
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582869417867663460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &3104133275820134811
 PrefabInstance:
   m_ObjectHideFlags: 0
