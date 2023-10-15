@@ -16,8 +16,9 @@ public abstract class BasePlatform : MonoBehaviour
             while (rigidbody == null)
                 await Task.Yield();
 
+            transform.parent = null;
             rigidbody.AddExplosionForce(_force, this.transform.position, _radius);
-
+            Destroy(gameObject, 2f);
         }
     }
 }
