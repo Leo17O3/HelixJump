@@ -795,7 +795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52ea4b63e1aa9b4d898b430c434f9fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minBallPositionY: 0
   _cameraMove: {fileID: 963194230}
   _cameraRotate: {fileID: 963194231}
 --- !u!114 &963194230
@@ -940,6 +939,7 @@ MonoBehaviour:
   - {fileID: 1433122631402284538, guid: db4d325f1155f7b4ca973b5938984c9a, type: 3}
   - {fileID: 2070726600310745551, guid: 80d8ae65520d92c4696d399f7f787460, type: 3}
   - {fileID: 4538042121479946603, guid: a19b980ff5185f8499c0be7f59e1233a, type: 3}
+  - {fileID: 4696043807945532892, guid: cbfd476419ec62d4fbbf581241db8d25, type: 3}
   _finishPlatform: {fileID: 7938915255993213717, guid: 17749002f79b8d742bd30f78ab91be91, type: 3}
 --- !u!4 &1779022532
 Transform:
