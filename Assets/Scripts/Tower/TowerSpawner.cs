@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TowerSpawner : MonoBehaviour
 {
-    [SerializeField] private int _levelCount;
+    private int _levelCount => PlayerData.Instance.LevelCount;
     [SerializeField] private float _additionalScale;
     [SerializeField] private GameObject _beam;
     [SerializeField] private SpawnPlatform _spawnPlatform;

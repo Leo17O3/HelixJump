@@ -12,6 +12,6 @@ public class SpawnPlatform : BasePlatform
 
     private void SpawnBall()
     {
-        Instantiate(_ball, _spawnPoint, Quaternion.identity);
+        Instantiate(_ball, transform.position + _spawnPoint, Quaternion.identity);
     }
 }

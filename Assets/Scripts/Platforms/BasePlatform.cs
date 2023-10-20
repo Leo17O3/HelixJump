@@ -10,8 +10,12 @@ public abstract class BasePlatform : MonoBehaviour
     {
         for (int i = 0; i < transform.childCount; i++)
         {
+            if (transform.GetChild(i).TryGetComponent(out Rigidbody rigidbody))
+            {
+                continue;
+            }
 
-            Rigidbody rigidbody = transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
+            rigidbody = transform.GetChild(i).gameObject.AddComponent<Rigidbody>();
 
             while (rigidbody == null)
                 await Task.Yield();

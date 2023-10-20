@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
 
-internal class Beam : MonoBehaviour
+public class Beam : MonoBehaviour
 {
 }
