@@ -25,14 +25,14 @@ public class TowerSpawner : MonoBehaviour
         Vector3 spawnPosition = beam.transform.position;
         spawnPosition.y += beam.transform.localScale.y - _additionalScale;
 
-        SpawnPlatform(_spawnPlatform, ref spawnPosition, Quaternion.Euler(0, 30f, 0), beam.transform);
+        SpawnPlatform(_spawnPlatform, ref spawnPosition, Quaternion.Euler(0, 30f, 0), transform);
 
         for (int i = 0; i < _levelCount; i++)
         {
-            SpawnPlatform(_platforms[Random.Range(0, _platforms.Length)], ref spawnPosition, Quaternion.Euler(0, Random.Range(0, 360), 0), beam.transform);
+            SpawnPlatform(_platforms[Random.Range(0, _platforms.Length)], ref spawnPosition, Quaternion.Euler(0, Random.Range(0, 360), 0), transform);
         }
 
-        SpawnPlatform(_finishPlatform, ref spawnPosition, Quaternion.identity, beam.transform);
+        SpawnPlatform(_finishPlatform, ref spawnPosition, Quaternion.identity, transform);
     }
 
     private void SpawnPlatform(BasePlatform platform, ref Vector3 spawnPosition, Quaternion rotation, Transform parent)
